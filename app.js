@@ -14,6 +14,36 @@ function productCaseNumber(product, price, isIncrasing) {
 
     const productTotalPrice = document.getElementById(product + '-total');
     productTotalPrice.innerText = productNumber * price;
+
+    // subTotal call 
+    calculateTotal();
+}
+
+
+// sub total calculate 
+function getInputValue(product) {
+    const phoneInput = document.getElementById(product + '-number');
+
+    const phoneNumber = parseInt(phoneInput.value);
+    return phoneNumber;
+
+}
+
+
+function calculateTotal() {
+    const phoneTotal = getInputValue('phone') * 1219;
+    const caseTotal = getInputValue('case') * 59;
+
+    const subTotal = phoneTotal + caseTotal;
+    const tax = subTotal / 10;
+    const totalPrice = subTotal + tax;
+
+    // update on the html 
+
+    document.getElementById('sub-total').innerText = subTotal;
+    document.getElementById('tax-amount').innerText = subTotal;
+    document.getElementById('total-amount').innerText = subTotal;
+
 }
 // handle phone increase and decrease event 
 
